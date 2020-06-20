@@ -1,0 +1,9 @@
+.cache
+public
+**/gatsby-*.js
+**/coverage/**
+**/node_modules/**
+**/dist/*
+**/__testfixtures__/**
+**/__tests__/fixtures/**
+**/*.d.ts

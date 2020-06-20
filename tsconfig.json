@@ -7,7 +7,6 @@
       "ESNext"
     ],
     "allowJs": true,
-    "checkJs": true,
     "jsx": "react",
     "strict": true,
     "esModuleInterop": true,
