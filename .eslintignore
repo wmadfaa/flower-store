@@ -1,5 +1,6 @@
 .cache
 public
+storybook-static
 **/gatsby-*.js
 **/coverage/**
 **/node_modules/**
