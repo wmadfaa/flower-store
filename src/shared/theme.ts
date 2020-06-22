@@ -29,9 +29,9 @@ const theme: DefaultTheme = {
       /* Neutrals/Pale grey */
       disabled: "#F0F0F5",
       /* UI/Active */
-      active: "#595CFF",
+      onfocus: "#595CFF",
       /* Border/Neutrals/Blach */
-      onfocus: "#000000",
+      active: "#000000",
       /* UI/Negative */
       error: "#EE7764",
       /* UI/Positive */
