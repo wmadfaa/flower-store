@@ -1,11 +1,21 @@
-import styled from "styled-components"
+import styled, {
+  css,
+  FlattenInterpolation,
+  ThemeProps,
+  DefaultTheme,
+} from "styled-components"
 
-export interface InputProps {
+export interface BaseInputProps {
   state?: "success" | "error"
+}
+
+export interface InputProps extends BaseInputProps {
   outline?: boolean
 }
 
-const Input = styled.input<InputProps>`
+export const BaseInputStyles = ({
+  state,
+}: BaseInputProps): FlattenInterpolation<ThemeProps<DefaultTheme>> => css`
   /* reset default styles */
   outline: none;
 
@@ -13,8 +23,8 @@ const Input = styled.input<InputProps>`
   padding: 12px 13px;
   background-color: ${({ theme }) => theme.colors.neutral.white};
   border: 1px solid
-    ${({ state, theme }) => theme.colors.field_state[state ? state : "default"]};
-  border-radius: ${({ outline }) => (outline ? 0 : 4)}px;
+    ${({ theme }) => theme.colors.field_state[state ? state : "default"]};
+  border-radius: 4px;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.neutral.dark_gray};
@@ -35,6 +45,11 @@ const Input = styled.input<InputProps>`
     }
     border-color: ${({ theme }) => theme.colors.field_state.disabled};
   }
+`
+
+const Input = styled.input<InputProps>`
+  ${({ theme, ...props }) => BaseInputStyles(props)}
+  border-radius: ${({ outline }) => (outline ? 0 : 4)}px;
 
   border-width: ${({ outline }) => (outline ? 0 : 1)}px;
   border-bottom-width: 1px;
