@@ -13,7 +13,7 @@ export default {
   },
 }
 
-const TextArea_block = styled.textarea`
+const TextArea_block = styled(TextArea)`
   display: block;
   margin: 20px 0;
 `
@@ -39,36 +39,6 @@ export const states: React.FC = () => {
       <TextArea
         as={TextArea_block}
         placeholder="Default TextArea text"
-        disabled
-      />
-    </React.Fragment>
-  )
-}
-
-export const outline: React.FC = () => {
-  return (
-    <React.Fragment>
-      <TextArea
-        as={TextArea_block}
-        outline
-        placeholder="Default TextArea text"
-      />
-      <TextArea
-        as={TextArea_block}
-        outline
-        placeholder="Success TextArea text"
-        state="success"
-      />
-      <TextArea
-        as={TextArea_block}
-        outline
-        placeholder="Error TextArea text"
-        state="error"
-      />
-      <TextArea
-        as={TextArea_block}
-        outline
-        placeholder="Disabled TextArea text"
         disabled
       />
     </React.Fragment>

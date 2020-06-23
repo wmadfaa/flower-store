@@ -106,7 +106,7 @@ const SHARED_ESLINT_RULES = {
   "jsx-a11y/role-supports-aria-props": "warn",
   "jsx-a11y/scope": "warn",
   "jsx-a11y/tabindex-no-positive": "warn",
-  indent: ["error", 2, { SwitchCase: 1 }],
+  indent: "off", //["error", 2, { SwitchCase: 1 }],
 }
 
 const SHARED_ESLINT_GLOBALS = {
