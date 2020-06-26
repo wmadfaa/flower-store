@@ -1,8 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { getLuminance, rgba } from "polished"
+import { rgba } from "polished"
 
 import theme from "../shared/theme"
+import { getBackgroundColor, getTextColor } from "../shared/utils"
 
 export interface ButtonProps
   extends Omit<React.HTMLProps<HTMLButtonElement>, "size"> {
@@ -46,29 +47,6 @@ const ButtonComponent: React.FC<ButtonProps> = ({
       {icon}
     </button>
   )
-}
-
-const getBackgroundColor = (color?: string): string => {
-  if (!color) {
-    return theme.colors.field_state.default
-  }
-  if (color in theme.colors.main) {
-    const selectedColor = color as keyof typeof theme["colors"]["main"]
-    return theme.colors.main[selectedColor]
-  } else if (color in theme.colors.field_state) {
-    const selectedColor = color as keyof typeof theme["colors"]["field_state"]
-    return theme.colors.field_state[selectedColor]
-  }
-  return color
-}
-
-const getTextColor = (color?: string): string => {
-  const luminance = getLuminance(getBackgroundColor(color))
-
-  if (luminance > 0.36) {
-    return theme.colors.neutral.black
-  }
-  return theme.colors.neutral.white
 }
 
 const Button = styled(ButtonComponent)`
