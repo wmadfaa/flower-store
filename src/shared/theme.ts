@@ -4,13 +4,13 @@ const theme: DefaultTheme = {
   colors: {
     main: {
       primary: "#595CFF",
-      secondary: "#8C8EFF",
-      secondary_dark: "#383BE4",
+      secondary: "#ff5caf",
+      secondary_dark: "#ff0082",
     },
     ui: {
-      positive: "#00CB6F",
-      warning: "#FFBC2C",
-      negative: "#EE7764",
+      positive: "#4bb543",
+      warning: "#ffc107",
+      negative: "#EE0028",
       /* Main/Primary */
       active: "#595CFF",
     },
@@ -33,26 +33,24 @@ const theme: DefaultTheme = {
       /* Border/Neutrals/Blach */
       active: "#000000",
       /* UI/Negative */
-      error: "#EE7764",
+      error: "#EE0028",
+      /* UI/Warning */
+      warning: "#ffc107",
       /* UI/Positive */
-      success: "#00CB6F",
+      success: "#4bb543",
     },
   },
   shadows: {
     light: css`
-      background: #c4c4c4;
       box-shadow: 0px 3px 52px rgba(90, 92, 102, 0.06);
     `,
     hover: css`
-      background: #c4c4c4;
       box-shadow: 3px 7px 18px rgba(103, 105, 116, 0.0833424);
     `,
     light_left: css`
-      background: #c4c4c4;
       box-shadow: -13px 1px 22px rgba(90, 92, 102, 0.0547148);
     `,
     hover_left: css`
-      background: #c4c4c4;
       box-shadow: -10px 5px 18px rgba(103, 105, 116, 0.0833424);
     `,
   },
@@ -112,13 +110,13 @@ const theme: DefaultTheme = {
     `,
     button: css`
       font-style: normal;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 14px;
       line-height: 17px;
     `,
     c1: css`
       font-style: normal;
-      font-weight: normal;
+      font-weight: 600;
       font-size: 12px;
       line-height: 16px;
     `,
@@ -142,6 +140,25 @@ const theme: DefaultTheme = {
       line-height: 18px;
       text-decoration-line: line-through;
     `,
+  },
+  shapes: {
+    radios0: css`
+      border-radius: 0;
+    `,
+    radios1: css`
+      border-radius: 4px;
+    `,
+    radios2: css`
+      border-radius: 8px;
+    `,
+    round: css`
+      border-radius: 10000px;
+    `,
+  },
+  animation: {
+    easing: {
+      rubber: "cubic-bezier(0.175, 0.885, 0.335, 1.05)",
+    },
   },
 }
 

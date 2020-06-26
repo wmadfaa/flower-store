@@ -7,7 +7,22 @@ export interface IconProps extends Omit<SVGProps<SVGSVGElement>, "ref"> {
   icon: keyof typeof iconsSet
 }
 
-const Svg = styled.svg<Omit<IconProps, "icon">>`
+const IconComponent: React.FC<IconProps> = ({ icon, className }) => {
+  return (
+    <svg
+      viewBox="0 0 1024 1024"
+      width="24px"
+      height="24px"
+      className={className}
+    >
+      {iconsSet[icon].map((d, i) => (
+        <Path key={i} d={d} />
+      ))}
+    </svg>
+  )
+}
+
+const Icon = styled(IconComponent)`
   display: ${props => (props.block ? "block" : "inline-block")};
   vertical-align: middle;
 
@@ -18,21 +33,5 @@ const Svg = styled.svg<Omit<IconProps, "icon">>`
 const Path = styled.path`
   fill: currentColor;
 `
-
-const Icon: React.FC<IconProps> = ({ icon, block = false, ...props }) => {
-  return (
-    <Svg
-      viewBox="0 0 1024 1024"
-      width="24px"
-      height="24px"
-      block={block}
-      {...props}
-    >
-      {iconsSet[icon].map((d, i) => (
-        <Path key={i} d={d} />
-      ))}
-    </Svg>
-  )
-}
 
 export default Icon

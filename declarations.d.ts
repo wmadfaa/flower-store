@@ -30,6 +30,7 @@ declare module "styled-components" {
         active: string
         onfocus: string
         error: string
+        warning: string
         success: string
       }
     }
@@ -56,6 +57,17 @@ declare module "styled-components" {
       c2: FlattenSimpleInterpolation
       strike1: FlattenSimpleInterpolation
       strike2: FlattenSimpleInterpolation
+    }
+    shapes: {
+      radios0: FlattenSimpleInterpolation
+      radios1: FlattenSimpleInterpolation
+      radios2: FlattenSimpleInterpolation
+      round: FlattenSimpleInterpolation
+    }
+    animation: {
+      easing: {
+        rubber: string
+      }
     }
   }
 }
