@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { getBackgroundColor } from "../shared/utils"
+import { getBackgroundColor, getTextColor } from "../shared/utils"
 
 import theme from "../shared/theme"
 
-export interface RadioComponentProps
+export interface CheckboxComponentProps
   extends Omit<
     React.DetailedHTMLProps<
       React.InputHTMLAttributes<HTMLInputElement>,
@@ -16,7 +16,7 @@ export interface RadioComponentProps
   label?: React.ReactNode | string
 }
 
-export interface RadioProps extends RadioComponentProps {
+export interface CheckboxProps extends CheckboxComponentProps {
   color?:
     | keyof typeof theme["colors"]["main"]
     | keyof Omit<
@@ -26,7 +26,7 @@ export interface RadioProps extends RadioComponentProps {
   inline?: boolean
 }
 
-const RadioComponent: React.FC<RadioComponentProps> = ({
+const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
   id,
   label,
   className,
@@ -35,7 +35,7 @@ const RadioComponent: React.FC<RadioComponentProps> = ({
 }) => {
   return (
     <label htmlFor={id} className={className}>
-      <input id={id} type="radio" {...props} />
+      <input id={id} type="checkbox" {...props} />
       <div className="label">
         <span className="label-content">{children || label}</span>
       </div>
@@ -43,7 +43,7 @@ const RadioComponent: React.FC<RadioComponentProps> = ({
   )
 }
 
-const Radio = styled(RadioComponent)<RadioProps>`
+const Checkbox = styled(CheckboxComponent)<CheckboxProps>`
   display: ${({ inline }) => (inline ? "inline-block" : "block")};
   margin: 16px 0;
   cursor: pointer;
@@ -52,9 +52,10 @@ const Radio = styled(RadioComponent)<RadioProps>`
     display: none;
     &:checked + .label:before {
       border-color: ${({ color }) => getBackgroundColor(color)};
+      background-color: ${({ color }) => getBackgroundColor(color)};
     }
     &:checked + .label:after {
-      transform: scale(1);
+      border-color: ${({ color }) => getTextColor(color)};
     }
   }
 
@@ -77,24 +78,29 @@ const Radio = styled(RadioComponent)<RadioProps>`
       position: absolute;
       box-sizing: border-box;
       content: "";
-      border-radius: 50%;
       transition: all 0.3s ease;
       transition-property: transform, border-color;
     }
     &:before {
+      top: 0px;
       left: 0;
-      top: 0;
       width: 20px;
       height: 20px;
-      border: 2px solid ${({ color }) => getBackgroundColor(color)};
+      background-color: ${({ theme }) => theme.colors.neutral.pale_gray};
+      transition: all 0.28s ${props => props.theme.animation.easing.rubber};
+      transition-property: background-color, border-color;
+      ${({ theme }) => theme.shapes.radios1}
     }
     &:after {
-      top: 5px;
-      left: 5px;
-      width: 10px;
+      top: 4px;
+      left: 8px;
+      width: 5px;
       height: 10px;
-      transform: scale(0);
-      background: ${({ color }) => getBackgroundColor(color)};
+      border-bottom: 1px solid transparent;
+      border-right: 1px solid transparent;
+      transform: rotate(45deg);
+      transition: border-color 0.28s
+        ${props => props.theme.animation.easing.rubber};
     }
   }
 
@@ -108,8 +114,8 @@ const Radio = styled(RadioComponent)<RadioProps>`
   `}
 `
 
-Radio.defaultProps = {
+Checkbox.defaultProps = {
   color: "primary",
 }
 
-export default Radio
+export default Checkbox
